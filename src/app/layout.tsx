@@ -1,7 +1,5 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import "tailwindcss/tailwind.css";
 
 export const metadata = {
   title: "Next Crud",
@@ -15,7 +13,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body className={inter.className}>{children}</body>
+      <body className={`antialiased`}>{children}</body>
     </html>
   );
 }
