@@ -1,9 +1,17 @@
+import Layout from "@/components/Layout";
+
 export default function Home() {
   return (
     <div
-      className={`flex h-screen flex-col items-center justify-center font-bold text-3xl text-white bg-gradient-to-br from-zinc-800 from-10% via-zinc-800 via-30% to-zinc-900 to-90%`}
+      className={`
+        flex h-screen flex-col items-center justify-center 
+        font-bold text-3xl text-black 
+        bg-gradient-to-br from-blue-100 from-10% via-cyan-200 via-30% to-purple-300 to-90%
+      `}
     >
-      Hello Next!
+          <Layout titulo="Cadastro Simples">
+            <span>Conteúdo</span>
+          </Layout>
     </div>
   );
 }
