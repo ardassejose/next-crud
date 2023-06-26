@@ -1,7 +1,22 @@
 import Layout from "@/components/Layout";
+import Tabela from "@/components/Tabela";
+import Cliente from "@/core/Cliente";
 
 export default function Home() {
-  return (
+    const clientes = [
+        new Cliente('Anália', 51, '1'),
+        new Cliente('Caio', 22, '2'),
+        new Cliente('Thor', 6, '3'),
+        new Cliente('Raphael', 54, '4'),
+        new Cliente('Víctor', 23, '5'),
+        new Cliente('Mariana', 19, '6'),
+        new Cliente('André', 17, '7'),
+        new Cliente('Walter', 49, '8'),
+        new Cliente('Pedro', 22, '9'),
+        new Cliente('Arthur', 24, '10')
+    ]
+    
+    return (
     <div
       className={`
         flex h-screen flex-col items-center justify-center 
@@ -10,7 +25,7 @@ export default function Home() {
       `}
     >
           <Layout titulo="Cadastro Simples">
-            <span>Conteúdo</span>
+            <Tabela clientes={clientes}></Tabela>
           </Layout>
     </div>
   );
