@@ -3,9 +3,13 @@ import { IconeEdicao, IconeLixo } from "./Icones";
 
 interface TabelaProps {
     clientes: Cliente[],
+    clienteSelecionado?: (cliente: Cliente) => void
+    clienteExcluido?: (cliente: Cliente) => void
 }
 
 export default function Tabela(props: TabelaProps) {
+    const ExibirAcoes = props.clienteExcluido || props.clienteSelecionado
+
     function renderizarCabecalho() {
         return (
             <>
@@ -13,7 +17,7 @@ export default function Tabela(props: TabelaProps) {
                     <th className="text-left p-4">Código</th>
                     <th className="text-left p-4">Nome</th>
                     <th className="text-left p-4">Idade</th>
-                    <th className=" p-4">Ações</th>
+                    {ExibirAcoes ? <th className="p-4">Ações</th> : false}
                 </tr>
             </>
         )
@@ -22,14 +26,23 @@ export default function Tabela(props: TabelaProps) {
     function renderizarAcoes(cliente: Cliente) {
         return (
             <td className="flex">
-                <button className={`
-                    flex justify-center items-center text-green-600 hover:bg-purple-50
-                    rounded-full p-2 m-1
-                `}>{IconeEdicao}</button>
-                <button className={`
-                    flex justify-center items-center text-red-600 hover:bg-purple-50
-                    rounded-full p-2 m-1
-                `}>{IconeLixo}</button>
+                {props.clienteSelecionado ? (
+                    <button className={`
+                        flex justify-center items-center text-green-600 hover:bg-purple-50 rounded-full p-2 m-1
+                    `}>
+                        {IconeEdicao}
+                    </button>
+                ) : false}
+
+                {props.clienteExcluido ? (
+                    <button className={`
+                        flex justify-center items-center text-red-600 hover:bg-purple-50 rounded-full p-2 m-1
+                    `}>
+                        {IconeLixo}
+                    </button>
+                ) : false}
+
+
             </td>
         )
     }
@@ -45,7 +58,7 @@ export default function Tabela(props: TabelaProps) {
                         <td className="text-left p-4">{cliente.id}</td>
                         <td className="text-left p-4">{cliente.nome}</td>
                         <td className="text-left p-4">{cliente.idade}</td>
-                        {renderizarAcoes()}
+                        {ExibirAcoes ? renderizarAcoes(cliente) : false}
                     </tr>
                 </>
             )
