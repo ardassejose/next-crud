@@ -15,6 +15,10 @@ export default function Home() {
         new Cliente('Pedro', 22, '9'),
         new Cliente('Arthur', 24, '10')
     ]
+
+    function clienteSelecionado(cliente: Cliente) {
+        console.log(cliente.nome)
+    }
     
     return (
     <div
@@ -25,7 +29,7 @@ export default function Home() {
       `}
     >
           <Layout titulo="Cadastro Simples">
-            <Tabela clientes={clientes}></Tabela>
+            <Tabela clientes={clientes} clienteSelecionado={clienteSelecionado}></Tabela>
           </Layout>
     </div>
   );
