@@ -1,3 +1,4 @@
+'use client'
 import Layout from "@/components/Layout";
 import Tabela from "@/components/Tabela";
 import Cliente from "@/core/Cliente";
@@ -19,18 +20,22 @@ export default function Home() {
     function clienteSelecionado(cliente: Cliente) {
         console.log(cliente.nome)
     }
-    
+
+    function clienteExcluido(cliente: Cliente) {
+        console.log(cliente.nome)
+    }
+
     return (
-    <div
-      className={`
-        flex h-screen flex-col items-center justify-center 
-        font-bold text-3xl text-black 
-        bg-gradient-to-br from-blue-100 from-10% via-cyan-200 via-30% to-purple-300 to-90%
-      `}
-    >
-          <Layout titulo="Cadastro Simples">
-            <Tabela clientes={clientes} clienteSelecionado={clienteSelecionado}></Tabela>
-          </Layout>
-    </div>
-  );
+        <div
+            className={`
+            flex h-screen flex-col items-center justify-center 
+            font-bold text-3xl text-black 
+            bg-gradient-to-br from-blue-100 from-10% via-cyan-200 via-30% to-purple-300 to-90%
+        `}
+        >
+            <Layout titulo="Cadastro Simples">
+                <Tabela clientes={clientes} clienteSelecionado={clienteSelecionado} clienteExcluido={clienteExcluido}></Tabela>
+            </Layout>
+        </div>
+    );
 }
